@@ -14,6 +14,8 @@ add_executable(
     src/UARTConfig.cpp
     src/UARTFrame.cpp
     src/UARTSimulator.cpp
+    src/UARTGUI.cpp
+
 )
 
 target_include_directories(

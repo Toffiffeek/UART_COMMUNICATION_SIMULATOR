@@ -1,13 +1,16 @@
 /**/
 #pragma once
 
+#include "Enums.hpp"
+
 
 class UARTConfig{
 private:
-    int baudRate;
+    BaudRate baudRate;
     int stopBits;
     bool parityEnabled;
 public:
     UARTConfig();
-    void displayMenu() const;
+    BaudRate getBaudRate() const;
+    void setBaudRate(BaudRate rate);
 };
