@@ -1,4 +1,6 @@
 /**/
+#pragma once
+
 
 class UARTSimulator{
     int sentFrames;

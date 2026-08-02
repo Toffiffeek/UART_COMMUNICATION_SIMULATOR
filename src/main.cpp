@@ -3,10 +3,11 @@
 #include<iostream>
 #include<vector>
 #include<string>
-#include "UARTFrame.hpp"
+#include "UARTConfig.hpp"
 
 
 int main(){
-    std::cout << "hello git" << std::endl;
+    UARTConfig config;
+    config.displayMenu();
     return 0;
 }
