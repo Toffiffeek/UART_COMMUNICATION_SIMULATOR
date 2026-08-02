@@ -2,9 +2,9 @@
 
 #include "Enums.hpp"
 
-class UARTGUI{
+class ConsoleUI{
     public:
-    UARTGUI();
+    ConsoleUI();
     void displayMenu() const;
     void displayBaudRateMenu() const;
     int getIntInput(int min, int max) const;

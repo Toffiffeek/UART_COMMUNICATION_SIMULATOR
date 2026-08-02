@@ -1,15 +1,15 @@
-#include "UARTGUI.hpp"
+#include "ConsoleUI.hpp"
 #include<iostream>
 
-UARTGUI::UARTGUI(){}
+ConsoleUI::ConsoleUI(){}
 
-void UARTGUI::displayMenu() const{
+void ConsoleUI::displayMenu() const{
     std::cout << "==================================\n";
     std::cout << "     UART CONFIGURATION MENU      \n";
     std::cout << "==================================\n";
 }
 
-void UARTGUI::displayBaudRateMenu() const{
+void ConsoleUI::displayBaudRateMenu() const{
     std::cout << "PRESS NUMBER TO CHOOSE DESIRABLE BAUD RATE\n";
     std::cout << "1. 9600 bps\n";
     std::cout << "2. 19200 bps\n";
@@ -18,7 +18,7 @@ void UARTGUI::displayBaudRateMenu() const{
     std::cout << "5. 115200 bps\n";
 }
 
-int UARTGUI::getIntInput(int min, int max) const{
+int ConsoleUI::getIntInput(int min, int max) const{
     while(true){
         int number;
         std::cout << "Enter number: ";
@@ -33,7 +33,7 @@ int UARTGUI::getIntInput(int min, int max) const{
     }
 }
 
-BaudRate UARTGUI::convertChoiceToBoudRate(int choice){
+BaudRate ConsoleUI::convertChoiceToBoudRate(int choice){
         switch(choice){
         case 1: 
             return BaudRate::BR_9600;

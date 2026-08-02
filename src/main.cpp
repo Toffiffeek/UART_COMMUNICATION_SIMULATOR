@@ -3,11 +3,11 @@
 
 
 #include "UARTConfig.hpp"
-#include "UARTGUI.hpp"
+#include "ConsoleUI.hpp"
 #include "Enums.hpp"
 
 int main(){
-    UARTGUI menu;
+    ConsoleUI menu;
     UARTConfig config;
     menu.displayMenu();
     menu.displayBaudRateMenu();
