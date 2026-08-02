@@ -13,7 +13,7 @@ add_executable(
     src/main.cpp
     src/UARTConfig.cpp
     src/UARTFrame.cpp
-    src/UARTsimulator.cpp
+    src/UARTSimulator.cpp
 )
 
 target_include_directories(

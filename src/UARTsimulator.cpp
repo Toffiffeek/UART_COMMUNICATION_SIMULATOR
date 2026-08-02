@@ -1,4 +1,4 @@
 /*Implementation of methonds declared in UARTSimulator.hpp*/
 
-#include<UARTsimulator.hpp>
+#include<UARTSimulator.hpp>
 #include<iostream>
