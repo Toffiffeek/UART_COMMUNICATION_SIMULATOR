@@ -2,7 +2,7 @@
 #include "UARTConfig.hpp"
 #include<iostream>
 
-UARTConfig::UARTConfig():baudRate(BaudRate::BR_9600), stopBits(0), parityEnabled(0){} 
+UARTConfig::UARTConfig():baudRate(BaudRate::BR_9600), stopBits(StopBits::ONE), parity(ParityMode::NONE){} 
 
 BaudRate UARTConfig::getBaudRate() const{
     return baudRate;

@@ -14,7 +14,5 @@ int main(){
     int choice = menu.getIntInput(1, 5);
     BaudRate rate = menu.convertChoiceToBoudRate(choice);
     config.setBaudRate(rate);
-    std::cout << static_cast<int>(config.getBaudRate());
-
     return 0;
 }

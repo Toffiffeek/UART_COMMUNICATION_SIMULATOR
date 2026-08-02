@@ -7,10 +7,14 @@
 class UARTConfig{
 private:
     BaudRate baudRate;
-    int stopBits;
-    bool parityEnabled;
+    StopBits stopBits;
+    ParityMode parity;
 public:
     UARTConfig();
     BaudRate getBaudRate() const;
+    StopBits getStopBits() const;
+    ParityMode getParity() const;
     void setBaudRate(BaudRate rate);
+    void setStopBits(StopBits numberOfStopBits);
+    void setParity(ParityMode mode);
 };
