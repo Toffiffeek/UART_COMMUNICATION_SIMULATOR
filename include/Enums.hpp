@@ -1,20 +1,20 @@
 #pragma once
 
 enum class BaudRate{
-    BR_9600 = 9600,
-    BR_19200 = 19200,
-    BR_38400 = 38400,
-    BR_57600 = 57600,
-    BR_115200 = 115200,
+    B9600 = 9600,
+    B19200 = 19200,
+    B38400 = 38400,
+    B57600 = 57600,
+    B115200 = 115200,
 };
 
 enum class ParityMode{
-    EVEN,
-    ODD,
-    NONE,
+    Even,
+    Odd,
+    None,
 };
 
 enum class StopBits{
-    ONE = 1,
-    TWO = 2,
+    One = 1,
+    Two = 2,
 };
