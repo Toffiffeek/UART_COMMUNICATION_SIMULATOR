@@ -1,6 +1,7 @@
 #pragma once
 
-enum class BaudRate{
+enum class BaudRate
+{
     B9600 = 9600,
     B19200 = 19200,
     B38400 = 38400,
@@ -8,13 +9,15 @@ enum class BaudRate{
     B115200 = 115200,
 };
 
-enum class ParityMode{
+enum class ParityMode
+{
     Even,
     Odd,
     None,
 };
 
-enum class StopBits{
+enum class StopBits
+{
     One = 1,
     Two = 2,
 };

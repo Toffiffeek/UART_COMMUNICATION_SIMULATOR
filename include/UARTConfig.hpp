@@ -3,18 +3,23 @@
 
 #include "Enums.hpp"
 
-
-class UARTConfig{
+class UARTConfig
+{
 private:
     BaudRate baudRate;
     StopBits stopBits;
     ParityMode parity;
+
 public:
-    UARTConfig();
+    UARTConfig(
+        BaudRate baudRate,
+        StopBits stopBits,
+        ParityMode parity);
+
     BaudRate getBaudRate() const;
     StopBits getStopBits() const;
     ParityMode getParity() const;
-    void setBaudRate(BaudRate rate);
-    void setStopBits(StopBits numberOfStopBits);
-    void setParity(ParityMode mode);
+    void setBaudRate(BaudRate baudRate);
+    void setStopBits(StopBits stopBits);
+    void setParity(ParityMode parity);
 };

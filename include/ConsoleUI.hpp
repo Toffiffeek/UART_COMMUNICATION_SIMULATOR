@@ -1,10 +1,11 @@
 #pragma once
 
 #include "Enums.hpp"
-#include<string>
+#include <string>
 
-class ConsoleUI{
-    public:
+class ConsoleUI
+{
+public:
     ConsoleUI();
     void displayMenu() const;
     void displayBaudRateMenu() const;
@@ -16,7 +17,6 @@ class ConsoleUI{
     StopBits convertChoiceToStopBits(int choice) const;
     int getIntInput(int min, int max) const;
     std::string getStringInput() const;
-
     BaudRate getBaudRateChoice() const;
     ParityMode getParityChoice() const;
     StopBits getStopBitsChoice() const;
