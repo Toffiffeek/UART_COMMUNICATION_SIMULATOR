@@ -8,5 +8,5 @@ class ConsoleUI{
     void displayMenu() const;
     void displayBaudRateMenu() const;
     int getIntInput(int min, int max) const;
-    BaudRate convertChoiceToBoudRate(int choice);
+    BaudRate convertChoiceToBoudRate(int choice) const;
 };

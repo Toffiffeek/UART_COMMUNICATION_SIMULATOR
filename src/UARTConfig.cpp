@@ -11,3 +11,19 @@ BaudRate UARTConfig::getBaudRate() const{
 void UARTConfig::setBaudRate(BaudRate rate){
     baudRate = rate;
 }
+
+StopBits UARTConfig::getStopBits() const{
+    return stopBits;
+}
+
+void UARTConfig::setStopBits(StopBits numberOfStopBits){
+    stopBits = numberOfStopBits;
+}
+
+ParityMode UARTConfig::getParity() const{
+    return parity;
+}
+
+void UARTConfig::setParity(ParityMode mode){
+    parity = mode;
+}

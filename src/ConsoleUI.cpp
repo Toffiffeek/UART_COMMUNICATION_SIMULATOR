@@ -33,7 +33,7 @@ int ConsoleUI::getIntInput(int min, int max) const{
     }
 }
 
-BaudRate ConsoleUI::convertChoiceToBoudRate(int choice){
+BaudRate ConsoleUI::convertChoiceToBoudRate(int choice) const{
         switch(choice){
         case 1: 
             return BaudRate::BR_9600;
