@@ -87,6 +87,7 @@ int ConsoleUI::getIntInput(int min, int max) const{
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             continue;
         }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return number;
     }
 }

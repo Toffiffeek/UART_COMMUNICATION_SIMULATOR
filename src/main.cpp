@@ -17,6 +17,7 @@ int main(){
     UARTConfig config;
 
     ui.displayMenu();
+    
     BaudRate rate = ui.getBaudRateChoice();
     config.setBaudRate(rate);
 
