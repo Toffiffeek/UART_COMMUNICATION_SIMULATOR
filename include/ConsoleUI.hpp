@@ -16,4 +16,8 @@ class ConsoleUI{
     StopBits convertChoiceToStopBits(int choice) const;
     int getIntInput(int min, int max) const;
     std::string getStringInput() const;
+
+    BaudRate getBaudRateChoice() const;
+    ParityMode getParityChoice() const;
+    StopBits getStopBitsChoice() const;
 };

@@ -103,3 +103,22 @@ std::string ConsoleUI::getStringInput() const{
         return message;
     }
 }
+
+
+BaudRate ConsoleUI::getBaudRateChoice() const{
+    displayBaudRateMenu();
+    int choice = getIntInput(1, 5);
+    return convertChoiceToBaudRate(choice);
+}
+
+ParityMode ConsoleUI::getParityChoice() const{
+    displayParityMenu();
+    int choice = getIntInput(1, 3);
+    return convertChoiceToParity(choice);
+}
+
+StopBits ConsoleUI::getStopBitsChoice() const{
+    displayStopBitsMenu();
+    int choice = getIntInput(1, 2);
+    return convertChoiceToStopBits(choice);
+}

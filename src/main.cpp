@@ -15,23 +15,15 @@
 int main(){
     ConsoleUI ui;
     UARTConfig config;
-    int choice;
 
     ui.displayMenu();
-
-    ui.displayBaudRateMenu();
-    choice = ui.getIntInput(1, 5);
-    BaudRate rate = ui.convertChoiceToBaudRate(choice);
+    BaudRate rate = ui.getBaudRateChoice();
     config.setBaudRate(rate);
 
-    ui.displayParityMenu();
-    choice = ui.getIntInput(1, 3);
-    ParityMode parity = ui.convertChoiceToParity(choice);
+    ParityMode parity = ui.getParityChoice();
     config.setParity(parity);
 
-    ui.displayStopBitsMenu();
-    choice = ui.getIntInput(1, 2);
-    StopBits stopBits = ui.convertChoiceToStopBits(choice);
+    StopBits stopBits = ui.getStopBitsChoice();
     config.setStopBits(stopBits);
 
     return 0;
