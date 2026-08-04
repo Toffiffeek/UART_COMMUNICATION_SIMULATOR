@@ -1,5 +1,5 @@
 #include "ConsoleUI.hpp"
-#include "EnumUtils.hpp"
+#include "Enums.hpp"
 #include <iostream>
 #include <stdexcept>
 #include <limits>

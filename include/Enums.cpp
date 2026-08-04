@@ -1,5 +1,5 @@
-#include "EnumUtils.hpp"
-#include <iostream>
+#include "Enums.hpp"
+#include<iostream>
 
 int baudRateToInt(BaudRate baudRate)
 {

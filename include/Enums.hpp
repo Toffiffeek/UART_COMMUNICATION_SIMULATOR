@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 enum class BaudRate
 {
     B9600 = 9600,
@@ -21,3 +23,8 @@ enum class StopBits
     One = 1,
     Two = 2,
 };
+
+
+int baudRateToInt(BaudRate baudrate);
+int stopBitsToInt(StopBits stopBits);
+std::string parityModeToString(ParityMode parity);
