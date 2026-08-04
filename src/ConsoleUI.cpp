@@ -1,4 +1,5 @@
 #include "ConsoleUI.hpp"
+#include "EnumUtils.hpp"
 #include <iostream>
 #include <stdexcept>
 #include <limits>
@@ -37,7 +38,12 @@ void ConsoleUI::displayStopBitsMenu() const
     std::cout << "2. TWO\n";
 }
 
-void ConsoleUI::displayCurrentConfiguration() const {}
+void ConsoleUI::displayConfig(const UARTConfig &config) const
+{
+    std::cout << "BAUD RATE: " << baudRateToInt(config.getBaudRate()) << " BPS\n";
+    std::cout << "NUMBER OF STOP BITS: " << stopBitsToInt(config.getStopBits()) << "\n";
+    std::cout << "PARITY MODE: " << parityModeToString(config.getParity()) <<"\n";
+}
 
 BaudRate ConsoleUI::convertChoiceToBaudRate(int choice) const
 {

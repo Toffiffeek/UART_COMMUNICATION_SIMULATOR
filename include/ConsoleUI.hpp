@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Enums.hpp"
+#include "UARTConfig.hpp"
 #include <string>
 
 class ConsoleUI
@@ -11,7 +12,7 @@ public:
     void displayBaudRateMenu() const;
     void displayParityMenu() const;
     void displayStopBitsMenu() const;
-    void displayCurrentConfiguration() const;
+    void displayConfig(const UARTConfig &config) const;
     BaudRate convertChoiceToBaudRate(int choice) const;
     ParityMode convertChoiceToParity(int choice) const;
     StopBits convertChoiceToStopBits(int choice) const;

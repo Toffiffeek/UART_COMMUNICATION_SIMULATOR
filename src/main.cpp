@@ -22,5 +22,7 @@ int main()
         ui.getStopBitsChoice(),
         ui.getParityChoice());
 
+    ui.displayConfig(config);
+
     return 0;
 }
