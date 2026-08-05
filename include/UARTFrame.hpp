@@ -1,18 +1,24 @@
 /**/
 #pragma once
 
-#include<vector>
-#include<string>
+#include <iostream>
+#include <vector>
 
-class UARTFrame{  
-    
-    public:
-    UARTFrame(std::string message);
+class UARTFrame
+{
+private:
     std::string message;
     std::vector<bool> frame;
 
-    std::string get_message();
-    std::vector<bool> reverse_bits(std::vector<bool> bits);
-    std::vector<bool> add_start_stop_bits(std::vector<bool> bits);
-    std::vector<bool> add_parity_bit(std::vector<bool> bits);
+public:
+    UARTFrame(std::string message, std::vector<bool> frame);
+
+    std::string getMessage() const;
+    std::vector<bool> getFrame() const;
+    void setMessage(std::string message);
+    void setFrame(std::vector<bool> frame);
+    std::vector<bool> reverseBits(std::vector<bool> bits);
+    std::vector<bool> addStopBits(std::vector<bool> bits);
+    std::vector<bool> addStartBits(std::vector<bool> bits);
+    std::vector<bool> addParityBit(std::vector<bool> bits);
 };

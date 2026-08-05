@@ -40,9 +40,11 @@ void ConsoleUI::displayStopBitsMenu() const
 
 void ConsoleUI::displayConfig(const UARTConfig &config) const
 {
+    std::cout << "==================================\n";
     std::cout << "BAUD RATE: " << baudRateToInt(config.getBaudRate()) << " BPS\n";
     std::cout << "NUMBER OF STOP BITS: " << stopBitsToInt(config.getStopBits()) << "\n";
     std::cout << "PARITY MODE: " << parityModeToString(config.getParity()) <<"\n";
+    std::cout << "==================================\n";
 }
 
 BaudRate ConsoleUI::convertChoiceToBaudRate(int choice) const
