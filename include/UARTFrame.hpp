@@ -10,15 +10,19 @@ class UARTFrame
 private:
     char character;
     std::vector<bool> bits;
+
     std::vector<bool> characterToBits(char character);
-    bool calculateParity(std::vector<bool> frame);
-    void addStartBit();
-    void addStopBits();
-    void addParityBits();
-    std::vector<bool> buildFrame();
+    bool calculateParityBit(const std::vector<bool>& bits);
+
+    void addStartBit(std::vector<bool>& frame);
+    void addStopBits(std::vector<bool>& frame, const UARTConfig& config);
+    void addParityBit(std::vector<bool>& frame, const UARTConfig& config);
+
+    std::vector<bool> buildFrame(const UARTConfig& config);
 
 public:
     UARTFrame(char character, const UARTConfig& config);
+
     char getCharacter() const;
-    std::vector<bool> getBits() const;
+    const std::vector<bool>& getBits() const;
 };
