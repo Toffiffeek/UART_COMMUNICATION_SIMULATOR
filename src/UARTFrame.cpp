@@ -22,7 +22,15 @@ std::vector<bool> UARTFrame::characterToBits(char& character, std::vector<bool>&
     }
     return frame;
 }
-bool UARTFrame::calculateParityBit(const std::vector<bool>& bits){}
+bool UARTFrame::calculateParityBit(const std::vector<bool>& bits){
+    int numberOfOnes;
+    for(int i = 0; i < 8; i++){
+        if(bits[i] == 1){
+            numberOfOnes++;
+        }
+    }
+    return (numberOfOnes % 2 == 0) ? 1 : 0;
+}
 void UARTFrame::addStartBit(std::vector<bool>& frame){}
 void UARTFrame::addStopBits(std::vector<bool>& frame, const UARTConfig& config){}
 void UARTFrame::addParityBit(std::vector<bool>& frame, const UARTConfig& config){}

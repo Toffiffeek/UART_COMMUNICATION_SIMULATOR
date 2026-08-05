@@ -32,6 +32,7 @@ int main()
     for(int i = 0; i < 8; i++){
         std::cout << test[i];
     }
+    std::cout << frame.calculateParityBit(test);
 
     return 0;
 }
