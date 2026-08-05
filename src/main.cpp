@@ -6,10 +6,12 @@
  * configuration of UART communication parameters.
  */
 #include <iostream>
+#include<vector>
 
 #include "UARTConfig.hpp"
 #include "ConsoleUI.hpp"
 #include "Enums.hpp"
+#include "UARTFrame.hpp"
 
 int main()
 {
@@ -23,6 +25,13 @@ int main()
         ui.getParityChoice());
 
     ui.displayConfig(config);
+
+    UARTFrame frame('c', config);
+    std::cout << frame.getCharacter();
+    std::vector<bool> test = frame.getBits();
+    for(int i = 0; i < 8; i++){
+        std::cout << test[i];
+    }
 
     return 0;
 }

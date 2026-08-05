@@ -11,7 +11,7 @@ private:
     char character;
     std::vector<bool> bits;
 
-    std::vector<bool> characterToBits(char character);
+    std::vector<bool> characterToBits(char& character, std::vector<bool>& frame);
     bool calculateParityBit(const std::vector<bool>& bits);
 
     void addStartBit(std::vector<bool>& frame);

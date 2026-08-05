@@ -15,7 +15,7 @@ add_executable(
     src/UARTFrame.cpp
     src/UARTSimulator.cpp
     src/ConsoleUI.cpp
-    include/Enums.cpp
+    src/Enums.cpp
 
 )
 
