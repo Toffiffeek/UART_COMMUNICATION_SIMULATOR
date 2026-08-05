@@ -3,24 +3,25 @@
 #include "UARTFrame.hpp"
 #include <iostream>
 #include <vector>
+#include <bitset>
 
-UARTFrame::UARTFrame(std::string message, std::vector<bool> frame) : message(message), frame(frame)
-{
+UARTFrame::UARTFrame(char character, const UARTConfig& config):character(character){
+    bits = buildFrame();
 }
 
-std::string UARTFrame::getMessage() const
-{
-    return message;
+char UARTFrame::getCharacter() const{
+    return character;
 }
 
-std::vector<bool> UARTFrame::getFrame() const
-{
-    return frame;
+std::vector<bool> UARTFrame::getBits() const{
+    return bits;
 }
 
-void UARTFrame::setMessage(std::string message){
-    this->message = message;
-}
-void UARTFrame::setFrame(std::vector<bool> frame){
-    this->frame = frame;
+std::vector<bool> UARTFrame::characterToBits(char character){
+    std::vector<bool> frame;
+    std::bitset<8> binary(character);
+    //copying from least significant bit to most siginificant bit
+    for(int i = 0; i < 7; i++){
+        frame.push_back(binary[i]);
+    }
 }

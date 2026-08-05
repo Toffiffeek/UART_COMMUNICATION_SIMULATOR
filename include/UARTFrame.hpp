@@ -1,24 +1,24 @@
 /**/
 #pragma once
 
+#include "UARTConfig.hpp"
 #include <iostream>
 #include <vector>
 
 class UARTFrame
 {
 private:
-    std::string message;
-    std::vector<bool> frame;
+    char character;
+    std::vector<bool> bits;
+    std::vector<bool> characterToBits(char character);
+    bool calculateParity(std::vector<bool> frame);
+    void addStartBit();
+    void addStopBits();
+    void addParityBits();
+    std::vector<bool> buildFrame();
 
 public:
-    UARTFrame(std::string message, std::vector<bool> frame);
-
-    std::string getMessage() const;
-    std::vector<bool> getFrame() const;
-    void setMessage(std::string message);
-    void setFrame(std::vector<bool> frame);
-    std::vector<bool> reverseBits(std::vector<bool> bits);
-    std::vector<bool> addStopBits(std::vector<bool> bits);
-    std::vector<bool> addStartBits(std::vector<bool> bits);
-    std::vector<bool> addParityBit(std::vector<bool> bits);
+    UARTFrame(char character, const UARTConfig& config);
+    char getCharacter() const;
+    std::vector<bool> getBits() const;
 };
