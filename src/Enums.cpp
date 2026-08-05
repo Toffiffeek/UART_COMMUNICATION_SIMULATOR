@@ -1,5 +1,6 @@
 #include "Enums.hpp"
 #include<iostream>
+#include <stdexcept>
 
 int baudRateToInt(BaudRate baudRate)
 {
