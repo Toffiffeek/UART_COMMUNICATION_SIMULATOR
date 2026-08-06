@@ -8,7 +8,11 @@ class ConsoleUI
 {
 public:
     ConsoleUI();
+
     void displayMenu() const;
+    int getIntInput(int min, int max) const;
+    std::string getStringInput() const;
+    
     void displayBaudRateMenu() const;
     void displayParityMenu() const;
     void displayStopBitsMenu() const;
@@ -16,8 +20,6 @@ public:
     BaudRate convertChoiceToBaudRate(int choice) const;
     ParityMode convertChoiceToParity(int choice) const;
     StopBits convertChoiceToStopBits(int choice) const;
-    int getIntInput(int min, int max) const;
-    std::string getStringInput() const;
     BaudRate getBaudRateChoice() const;
     ParityMode getParityChoice() const;
     StopBits getStopBitsChoice() const;

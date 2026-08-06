@@ -6,7 +6,6 @@ A simple C++ application that simulates UART (Universal Asynchronous Receiver/Tr
 
 - UART configuration
   - Baud rate
-  - Data bits
   - Parity
   - Stop bits
 - ASCII to binary conversion
@@ -27,7 +26,9 @@ UART-Communication-Simulator/
 │
 ├── include/
 ├── src/
+├── .gitignore
 ├── CMakeLists.txt
+├── LICENSE
 └── README.md
 ```
 
@@ -36,13 +37,14 @@ UART-Communication-Simulator/
 Input:
 
 ```
-Message: Hi
+MESSAGE: Hi
 ```
 
-Generated frame:
+Generated frames:
 
 ```
-0 01001000 0 1
+0 00010010 0 1
+0 10010110 0 1
 ```
 
 Output:
@@ -52,7 +54,7 @@ Sending...
 
 TX -> 0
 TX -> 0
-TX -> 1
+TX -> 0
 TX -> 0
 ...
 
