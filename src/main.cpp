@@ -6,7 +6,7 @@
  * configuration of UART communication parameters.
  */
 #include <iostream>
-#include<vector>
+#include <vector>
 
 #include "UARTConfig.hpp"
 #include "ConsoleUI.hpp"
@@ -25,14 +25,14 @@ int main()
         ui.getParityChoice());
 
     ui.displayConfig(config);
+    char c;
+    std::cout << "message: ";
+    std::cin >> c;
 
-    UARTFrame frame('c', config);
-    std::cout << frame.getCharacter();
-    std::vector<bool> test = frame.getBits();
-    for(int i = 0; i < 8; i++){
-        std::cout << test[i];
+    UARTFrame frame(c, config);
+    for (bool bit : frame.getBits())
+    {
+        std::cout << bit;
     }
-    std::cout << frame.calculateParityBit(test);
-
     return 0;
 }
