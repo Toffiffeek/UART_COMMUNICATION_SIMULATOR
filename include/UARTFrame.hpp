@@ -11,12 +11,12 @@ private:
     char character;
     std::vector<bool> bits;
 
-    std::vector<bool> characterToBits(char& character, std::vector<bool>& frame);
+    void characterToBits(char character, std::vector<bool>& frame);
     
 
-    std::vector<bool> addStartBit(std::vector<bool>& frame);
-    std::vector<bool> addStopBits(std::vector<bool>& frame, const UARTConfig& config);
-    std::vector<bool> addParityBit(std::vector<bool>& frame, const UARTConfig& config);
+    void addStartBit(std::vector<bool>& frame);
+    void addStopBits(std::vector<bool>& frame, const UARTConfig& config);
+    void addParityBit(std::vector<bool>& frame, const UARTConfig& config);
 
     std::vector<bool> buildFrame(std::vector<bool>& frame, const UARTConfig& config);
 
