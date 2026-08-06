@@ -23,8 +23,8 @@ const std::vector<bool> &UARTFrame::getBits() const
 
 void UARTFrame::characterToBits(char character, std::vector<bool> &frame)
 {
-    std::bitset<8> bs(character);
-    for (int i = 0; i < 8; i++)
+    std::bitset<DATA_BITS> bs(character);
+    for (int i = 0; i < DATA_BITS; i++)
     {
         frame.push_back(bs[i]);
     }
@@ -33,15 +33,14 @@ void UARTFrame::characterToBits(char character, std::vector<bool> &frame)
 bool UARTFrame::calculateParityBit(const std::vector<bool> &dataBits) const
 {
     int numberOfOnes = 0;
-    // Iterating from 1 to avoid start bit
-    for (int i = 1; i < 9; i++)
+    for (bool bit : dataBits)
     {
-        if (dataBits[i])
+        if (bit)
         {
             numberOfOnes++;
         }
     }
-    return (numberOfOnes % 2 == 0) ? 1 : 0;
+    return numberOfOnes % 2 == 0;
 }
 
 void UARTFrame::addStartBit(std::vector<bool> &frame)

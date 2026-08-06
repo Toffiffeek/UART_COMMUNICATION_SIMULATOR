@@ -8,6 +8,7 @@
 class UARTFrame
 {
 private:
+    static constexpr int DATA_BITS = 8;
     char character;
     std::vector<bool> bits;
 
