@@ -58,7 +58,7 @@ TX -> 0
 TX -> 0
 ...
 
-Received: Hi
+RECEIVED: Hi
 ```
 
 ## How to Build
@@ -71,7 +71,7 @@ cmake --build build
 Run:
 
 ```bash
-./build/UARTSimulator
+./build/UART_COMMUNICATION_SIMULATOR.exe
 ```
 
 ## Future Improvements

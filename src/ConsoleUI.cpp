@@ -47,6 +47,21 @@ void ConsoleUI::displayConfig(const UARTConfig &config) const
     std::cout << "==================================\n";
 }
 
+void ConsoleUI::displayFrame(const UARTFrame &frame) const{
+    std::cout << "==================================\n";
+    std::cout << "CHARACTER: " << frame.getCharacter() << "\n";
+    std::cout << "BITS: ";
+    displayBits(frame.getBits());
+    std::cout << "==================================\n";
+}
+
+void ConsoleUI::displayBits(const std::vector<bool> &bits) const{
+    for(bool bit:bits){
+        std::cout << bit;
+    }
+    std::cout << "\n";
+}
+
 BaudRate ConsoleUI::convertChoiceToBaudRate(int choice) const
 {
     switch (choice)

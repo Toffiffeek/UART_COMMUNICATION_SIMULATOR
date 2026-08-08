@@ -30,9 +30,6 @@ int main()
     std::cin >> c;
 
     UARTFrame frame(c, config);
-    for (bool bit : frame.getBits())
-    {
-        std::cout << bit;
-    }
-    return 0;
+    ui.displayFrame(frame);
+
 }

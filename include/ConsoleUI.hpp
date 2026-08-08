@@ -2,6 +2,7 @@
 
 #include "Enums.hpp"
 #include "UARTConfig.hpp"
+#include "UARTFrame.hpp"
 #include <string>
 
 class ConsoleUI
@@ -23,4 +24,7 @@ public:
     BaudRate getBaudRateChoice() const;
     ParityMode getParityChoice() const;
     StopBits getStopBitsChoice() const;
+
+    void displayFrame(const UARTFrame &frame) const;
+    void displayBits(const std::vector<bool> &bits) const;
 };
