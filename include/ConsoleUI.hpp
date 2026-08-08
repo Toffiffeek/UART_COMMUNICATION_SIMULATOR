@@ -17,14 +17,17 @@ public:
     void displayBaudRateMenu() const;
     void displayParityMenu() const;
     void displayStopBitsMenu() const;
-    void displayConfig(const UARTConfig &config) const;
+
     BaudRate convertChoiceToBaudRate(int choice) const;
     ParityMode convertChoiceToParity(int choice) const;
     StopBits convertChoiceToStopBits(int choice) const;
+
     BaudRate getBaudRateChoice() const;
     ParityMode getParityChoice() const;
     StopBits getStopBitsChoice() const;
 
-    void displayFrame(const UARTFrame &frame) const;
+    void displayConfig(const UARTConfig &config) const;
+
     void displayBits(const std::vector<bool> &bits) const;
+    void displayFrame(const UARTFrame &frame) const;
 };

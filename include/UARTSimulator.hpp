@@ -1,9 +1,18 @@
 /**/
 #pragma once
 
+#include "UARTFrame.hpp"
+#include "UARTConfig.hpp"
+#include<iostream>
+#include<vector>
+#include<queue>
 
 class UARTSimulator{
-    int sentFrames;
-    int receivedFrames;
-    int error;
+private:
+    std::queue<UARTFrame> frames;
+public:
+    UARTSimulator::UARTSimulator(std::string message, const UARTConfig &config);
+
+
+    void buildQueue(std::string message, const UARTConfig &config);
 };

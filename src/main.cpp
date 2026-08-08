@@ -12,6 +12,7 @@
 #include "ConsoleUI.hpp"
 #include "Enums.hpp"
 #include "UARTFrame.hpp"
+#include "UARTSimulator.hpp"
 
 int main()
 {
@@ -25,11 +26,5 @@ int main()
         ui.getParityChoice());
 
     ui.displayConfig(config);
-    char c;
-    std::cout << "message: ";
-    std::cin >> c;
-
-    UARTFrame frame(c, config);
-    ui.displayFrame(frame);
 
 }
