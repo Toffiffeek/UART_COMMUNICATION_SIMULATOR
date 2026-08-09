@@ -18,9 +18,11 @@ private:
     void addParityBit(std::vector<bool> &frame, const UARTConfig &config, bool evenNumberOfOnes);
     void buildFrame(char character, std::vector<bool> &frame, const UARTConfig &config);
     bool calculateParityBit(const std::vector<bool> &dataBits) const;
-
+    void stripConfigBits(std::vector<bool> &frame, const UARTConfig &config);
+    void bitsToCharacter(std::vector<bool> &frame);
 public:
+    UARTFrame(std::vector<bool> &bits, const UARTConfig &config);
     UARTFrame(char character, const UARTConfig &config);
     char getCharacter() const;
-    const std::vector<bool> &getBits() const;
+    const std::vector<bool> &getBits() const;    
 };

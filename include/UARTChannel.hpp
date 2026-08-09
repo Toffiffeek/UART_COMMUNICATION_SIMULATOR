@@ -7,7 +7,8 @@ class UARTChannel{
 private:
     std::mt19937 generator;
     std::uniform_int_distribution<int> distribution;
-    void errorInjection(std::vector<bool> transmitedFrame);
+    std::vector<bool> errorInjection(std::vector<bool> transmittedBits);
+    std::vector<bool> transmit(UARTFrame transmittedFrame);
 public:
     UARTChannel();
 };

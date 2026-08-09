@@ -34,5 +34,9 @@ int main()
         ui.displayFrame(f.front());
         f.pop();
     }
+    std::vector<bool> bits = {
+    0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1};
+    UARTFrame f2(bits, config);
+    ui.displayFrame(f2);
     return 0;
 }

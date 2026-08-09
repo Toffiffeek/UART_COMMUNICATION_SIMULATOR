@@ -6,6 +6,11 @@
 #include <bitset>
 #include <stdexcept>
 
+UARTFrame::UARTFrame(std::vector<bool> &bits, const UARTConfig &config) : bits(bits){
+    stripConfigBits(bits, config);
+    bitsToCharacter(bits);
+}
+
 UARTFrame::UARTFrame(char character, const UARTConfig &config) : character(character)
 {
     buildFrame(character, bits, config);
@@ -28,6 +33,14 @@ void UARTFrame::characterToBits(char character, std::vector<bool> &frame)
     {
         frame.push_back(bs[i]);
     }
+}
+
+void UARTFrame::bitsToCharacter(std::vector<bool> &frame){
+    std::bitset<DATA_BITS> bs;
+    for(std::size_t i = 0; i < DATA_BITS; i++){
+        bs[i-1] = frame[i];
+    }
+    character = static_cast<char>(bs.to_ulong());
 }
 
 bool UARTFrame::calculateParityBit(const std::vector<bool> &dataBits) const
@@ -91,3 +104,22 @@ void UARTFrame::buildFrame(char character, std::vector<bool> &frame, const UARTC
     addParityBit(frame, config, calculateParityBit(frame));
     addStopBits(frame, config);
 }
+
+void UARTFrame::stripConfigBits(std::vector<bool> &frame, const UARTConfig &config){
+    switch(config.getStopBits()){
+        case StopBits::One:
+            for(int i = 0; i < 3; i++){
+                frame.pop_back();
+            }
+            break;
+        case StopBits::Two:
+            for(int i = 0; i < 3; i++){
+                frame.pop_back();
+            }
+            break;
+        default:
+            throw std::invalid_argument("INVALID ARGUMENT");
+    }
+}
+
+
