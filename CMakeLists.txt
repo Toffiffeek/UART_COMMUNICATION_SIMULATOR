@@ -13,10 +13,11 @@ add_executable(
     src/main.cpp
     src/UARTConfig.cpp
     src/UARTFrame.cpp
-    src/UARTSimulator.cpp
+    src/UARTTransmitter.cpp
     src/ConsoleUI.cpp
     src/Enums.cpp
-
+    src/UARTReceiver.cpp
+    src/UARTChannel.cpp
 )
 
 target_include_directories(

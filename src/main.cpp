@@ -12,7 +12,7 @@
 #include "ConsoleUI.hpp"
 #include "Enums.hpp"
 #include "UARTFrame.hpp"
-#include "UARTSimulator.hpp"
+#include "UARTTransmitter.hpp"
 
 int main()
 {
@@ -26,5 +26,14 @@ int main()
         ui.getParityChoice());
 
     ui.displayConfig(config);
+
+    std::string str = ui.getStringInput();
+    UARTTransmitter tx(str, config);
+    std::queue<UARTFrame> f = tx.getFramesToTransmit();
+    for(char character: str){
+        ui.displayFrame(f.front());
+        f.pop();
+    }
+    return 0;
 
 }
