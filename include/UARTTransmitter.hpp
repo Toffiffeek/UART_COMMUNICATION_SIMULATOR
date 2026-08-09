@@ -4,7 +4,6 @@
 #include "UARTFrame.hpp"
 #include "UARTConfig.hpp"
 #include<iostream>
-#include<vector>
 #include<queue>
 
 class UARTTransmitter{
