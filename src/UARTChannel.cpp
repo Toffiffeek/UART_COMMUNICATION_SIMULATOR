@@ -16,6 +16,8 @@ std::vector<bool> UARTChannel::errorInjection(std::vector<bool> transmittedBits)
     return transmittedBits;
 }
 
-std::vector<bool> UARTChannel::transmit(UARTFrame transmittedFrame){
-    errorInjection(transmittedFrame.getBits());
+std::vector<bool> UARTChannel::transmit(std::queue<UARTFrame> frames){
+    for(std::size_t i = 0; i < frames.size(); i++){
+        errorInjection(frames.front().getBits());
+    }
 }

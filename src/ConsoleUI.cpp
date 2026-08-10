@@ -164,3 +164,9 @@ StopBits ConsoleUI::getStopBitsChoice() const
     int choice = getIntInput(1, 2);
     return convertChoiceToStopBits(choice);
 }
+
+void ConsoleUI::displayTransmision(const std::vector<bool>& bits) const{
+    for(bool bit : bits){
+        std::cout << "TX-> " << bit << " ->RX\n";
+    }
+}

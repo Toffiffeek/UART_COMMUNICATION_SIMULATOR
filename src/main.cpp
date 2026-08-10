@@ -26,17 +26,6 @@ int main()
         ui.getParityChoice());
 
     ui.displayConfig(config);
-
-    std::string str = ui.getStringInput();
-    UARTTransmitter tx(str, config);
-    std::queue<UARTFrame> f = tx.getFramesToTransmit();
-    for(char character: str){
-        ui.displayFrame(f.front());
-        f.pop();
-    }
-    std::vector<bool> bits = {
-    0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1};
-    UARTFrame f2(bits, config);
-    ui.displayFrame(f2);
+    
     return 0;
 }

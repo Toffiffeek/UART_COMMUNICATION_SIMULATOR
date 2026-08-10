@@ -1,6 +1,6 @@
 /*Implementation of methonds declared in UARTSimulator.hpp*/
 
-#include<UARTTransmitter.hpp>
+#include "UARTTransmitter.hpp"
 #include<iostream>
 
 UARTTransmitter::UARTTransmitter(std::string message, const UARTConfig& config){
