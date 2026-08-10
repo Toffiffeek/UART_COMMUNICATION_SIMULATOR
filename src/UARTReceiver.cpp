@@ -10,7 +10,7 @@ UARTReceiver::UARTReceiver(std::queue<std::vector<bool>> transmittedBitSets, con
 void UARTReceiver::decodeQueue(std::queue<std::vector<bool>> bitSets, const UARTConfig& config){
     while(!bitSets.empty()){
         framesReceived.push(UARTFrame(bitSets.front(), config));
-        framesReceived.pop();
+        bitSets.pop();
     }
 }
 
