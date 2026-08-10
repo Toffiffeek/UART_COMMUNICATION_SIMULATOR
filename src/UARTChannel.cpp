@@ -1,23 +1,26 @@
 #include "UARTChannel.hpp"
 #include <cstdlib>
 #include <vector>
+#include <queue>
 
 UARTChannel::UARTChannel() : generator(std::random_device{}()), distribution(1, 1000)
 {};
 
-std::vector<bool> UARTChannel::errorInjection(std::vector<bool> transmittedBits){
-    for(std::size_t i = 0; transmittedBits.size(); i++)
+std::vector<bool> UARTChannel::errorInjection(std::vector<bool> bits){
+    for(std::size_t i = 0; bits.size(); i++)
     {
         int randomNumber = distribution(generator);
         if(randomNumber == 1){
-            transmittedBits[i] = !transmittedBits[i];
+            bits[i] = !bits[i];
         }
     }
-    return transmittedBits;
+    return bits;
 }
 
-std::vector<bool> UARTChannel::transmit(std::queue<UARTFrame> frames){
-    for(std::size_t i = 0; i < frames.size(); i++){
-        errorInjection(frames.front().getBits());
+std::queue<std::vector<bool>> UARTChannel::transmit(std::queue<UARTFrame> transmittedFrames){
+    std::queue<std::vector<bool>> transmittedBitSets;
+    for(std::size_t i = 0; i < transmittedFrames.size(); i++){
+        transmittedBitSets.push(errorInjection(transmittedFrames.front().getBits()));
     }
+    return transmittedBitSets;
 }

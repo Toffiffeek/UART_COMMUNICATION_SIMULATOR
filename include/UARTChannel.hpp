@@ -10,7 +10,7 @@ private:
     std::uniform_int_distribution<int> distribution;
 
     std::vector<bool> errorInjection(std::vector<bool> transmittedBits);
-    std::vector<bool> transmit(const std::queue<UARTFrame> frames);
 public:
     UARTChannel();
+    std::queue<std::vector<bool>> transmit(const std::queue<UARTFrame> frames);
 };

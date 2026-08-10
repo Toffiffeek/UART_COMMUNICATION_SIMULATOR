@@ -13,6 +13,8 @@
 #include "Enums.hpp"
 #include "UARTFrame.hpp"
 #include "UARTTransmitter.hpp"
+#include "UARTChannel.hpp"
+#include "UARTReceiver.hpp"
 
 int main()
 {
@@ -24,8 +26,16 @@ int main()
         ui.getBaudRateChoice(),
         ui.getStopBitsChoice(),
         ui.getParityChoice());
-
     ui.displayConfig(config);
-    
+    std::string message = ui.getStringInput();
+    UARTTransmitter tx(message, config);
+    UARTChannel channel;
+    UARTReceiver rx(channel.transmit(tx.getFramesToTransmit()), config);
+    std::queue<UARTFrame> q1 = rx.getReceivedFrames(); 
+    for(char c: message){
+        ui.displayFrame(q1.front());
+        q1.pop();
+    }
+
     return 0;
 }

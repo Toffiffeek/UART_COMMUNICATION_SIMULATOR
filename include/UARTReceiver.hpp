@@ -10,9 +10,9 @@
 class UARTReceiver{
 private:
     std::queue<UARTFrame> framesReceived;
-    void decodeQueue(std::vector<bool>& bits, const UARTConfig &config);
+    void decodeQueue(std::queue<std::vector<bool>>& bitSets, const UARTConfig &config);
 
 public:
-    UARTReceiver(std::vector<bool> bits, const UARTConfig &config);
+    UARTReceiver(std::queue<std::vector<bool>> &transmittedBitSets, const UARTConfig &config);
     const std::queue<UARTFrame> &getReceivedFrames() const;
 };
