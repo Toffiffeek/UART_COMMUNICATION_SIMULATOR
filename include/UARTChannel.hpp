@@ -12,5 +12,5 @@ private:
     std::vector<bool> errorInjection(std::vector<bool> transmittedBits);
 public:
     UARTChannel();
-    std::queue<std::vector<bool>> transmit(const std::queue<UARTFrame> frames);
+    std::queue<std::vector<bool>> transmit(std::queue<UARTFrame> frames);
 };

@@ -31,11 +31,10 @@ int main()
     UARTTransmitter tx(message, config);
     UARTChannel channel;
     UARTReceiver rx(channel.transmit(tx.getFramesToTransmit()), config);
-    std::queue<UARTFrame> q1 = rx.getReceivedFrames(); 
     for(char c: message){
-        ui.displayFrame(q1.front());
-        q1.pop();
+        ui.displayFrame(rx.getReceivedFrames().front());
     }
+    std::cout << "test";
 
     return 0;
 }
