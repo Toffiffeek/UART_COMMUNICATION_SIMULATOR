@@ -11,6 +11,7 @@ A simple C++ application that simulates UART (Universal Asynchronous Receiver/Tr
 - ASCII to binary conversion
 - UART frame generation
 - Bit-by-bit transmission simulation
+- Random transmision errors
 - Frame validation
 - Console output with transmission summary
 
@@ -50,8 +51,6 @@ Generated frames:
 Output:
 
 ```
-Sending...
-
 TX -> 0
 TX -> 0
 TX -> 0
@@ -76,7 +75,6 @@ Run:
 
 ## Future Improvements
 
-- Random transmission errors
 - Multiple UART devices
 - Logging to file
 - GUI version
