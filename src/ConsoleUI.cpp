@@ -48,8 +48,14 @@ void ConsoleUI::displayConfig(const UARTConfig &config) const
 }
 
 void ConsoleUI::displayFrame(const UARTFrame &frame) const{
-    std::cout << "==================================\n";
-    std::cout << "CHARACTER: " << frame.getCharacter() << "\n";
+    std::cout << "==================================\n"; 
+    if(static_cast<int>(frame.getCharacter()) > 0)
+    {
+        std::cout << "CHARACTER: " << frame.getCharacter() << "\n";
+    }
+    else{
+        std::cout << "CHARACTER: ASCII NOT FOUND" << "\n";
+    }
     std::cout << "BITS: ";
     displayBits(frame.getBits());
     std::cout << "==================================\n";

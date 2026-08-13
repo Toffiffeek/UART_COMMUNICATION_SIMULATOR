@@ -38,7 +38,7 @@ void UARTFrame::characterToBits(char character, std::vector<bool> &frame)
 void UARTFrame::bitsToCharacter(std::vector<bool> &frame){
     std::bitset<DATA_BITS> bs;
     for(std::size_t i = 0; i < DATA_BITS; i++){
-        bs[i-1] = frame[i];
+        bs[i] = frame[i+1];
     }
     character = static_cast<char>(bs.to_ulong());
 }
