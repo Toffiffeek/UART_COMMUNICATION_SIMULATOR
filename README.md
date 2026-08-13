@@ -10,7 +10,7 @@ A simple C++ application that simulates UART (Universal Asynchronous Receiver/Tr
   - Stop bits
 - ASCII to binary conversion
 - UART frame generation
-- Bit-by-bit transmission simulation
+- Frame-by-frame transmission simulation
 - Random transmision errors
 - Frame validation
 - Console output with transmission summary
