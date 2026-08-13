@@ -3,7 +3,7 @@
 #include <vector>
 #include <queue>
 
-UARTReceiver::UARTReceiver(std::queue<std::vector<bool>> transmittedBitSets, const UARTConfig &config){
+UARTReceiver::UARTReceiver(std::queue<std::vector<bool>> transmittedBitSets, const UARTConfig &config): errors(0){
     decodeQueue(transmittedBitSets, config);
 }
 

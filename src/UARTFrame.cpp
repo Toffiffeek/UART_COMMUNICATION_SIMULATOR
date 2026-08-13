@@ -108,13 +108,23 @@ void UARTFrame::buildFrame(char character, std::vector<bool> &frame, const UARTC
 void UARTFrame::stripConfigBits(std::vector<bool> &frame, const UARTConfig &config){
     switch(config.getStopBits()){
         case StopBits::One:
-            for(int i = 0; i < 3; i++){
+            if(config.getParity() == ParityMode::None){
                 frame.pop_back();
             }
+            else{
+                for(int i = 0; i < 2; i++){
+                    frame.pop_back();
+                }
+            }   
             break;
         case StopBits::Two:
-            for(int i = 0; i < 3; i++){
+            if(config.getParity() == ParityMode::None){
                 frame.pop_back();
+            }
+            else{
+                for(int i = 0; i < 3; i++){
+                    frame.pop_back();
+                }
             }
             break;
         default:
@@ -122,4 +132,14 @@ void UARTFrame::stripConfigBits(std::vector<bool> &frame, const UARTConfig &conf
     }
 }
 
-
+// TODO NEXT
+int UARTFrame::validateFrame(const std::vector<bool> &frame) const{
+    int numberOfOnes = 0;
+    for(int i = 1; i < DATA_BITS + 1; i++)
+    {
+        if(frame[i] == 1){
+            numberOfOnes++;
+        }
+    }
+    return numberOfOnes;
+}
