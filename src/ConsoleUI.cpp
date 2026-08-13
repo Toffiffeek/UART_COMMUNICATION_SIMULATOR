@@ -3,6 +3,8 @@
 #include <iostream>
 #include <stdexcept>
 #include <limits>
+#include <vector>
+#include <queue>
 
 ConsoleUI::ConsoleUI() = default;
 
@@ -175,4 +177,13 @@ void ConsoleUI::displayTransmision(const std::vector<bool>& bits) const{
     for(bool bit : bits){
         std::cout << "TX-> " << bit << " ->RX\n";
     }
+}
+
+void ConsoleUI::displayMessage(std::queue<UARTFrame> frames) const{
+    std::cout << "RECEIVED: ";
+    while(!frames.empty()){
+        std::cout << frames.front().getCharacter();
+        frames.pop();
+    }
+    std::cout << "\n";
 }

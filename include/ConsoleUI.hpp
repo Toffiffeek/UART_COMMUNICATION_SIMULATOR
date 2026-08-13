@@ -5,6 +5,8 @@
 #include "UARTFrame.hpp"
 #include "UARTTransmitter.hpp"
 #include <string>
+#include <vector>
+#include <queue>
 
 class ConsoleUI
 {
@@ -32,4 +34,5 @@ public:
     void displayBits(const std::vector<bool> &bits) const;
     void displayFrame(const UARTFrame &frame) const;
     void displayTransmision(const std::vector<bool> &bits) const;
+    void displayMessage(std::queue<UARTFrame> frames) const;
 };
