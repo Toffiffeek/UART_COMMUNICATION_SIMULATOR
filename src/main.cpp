@@ -32,12 +32,7 @@ int main()
 
     UARTTransmitter tx(message, config);
     UARTChannel channel;
-    UARTReceiver rx(channel.transmit(tx.getFramesToTransmit()), config);
-    std::queue<UARTFrame> frames = rx.getReceivedFrames();
-    for(char c: message){
-        ui.displayFrame(frames.front());
-        frames.pop();
-    }
+    UARTReceiver rx(channel.transmit(tx.getFramesToTransmit(), ui), config);
 
     return 0;
 }

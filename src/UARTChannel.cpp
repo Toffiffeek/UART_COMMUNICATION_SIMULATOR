@@ -17,10 +17,11 @@ std::vector<bool> UARTChannel::errorInjection(std::vector<bool> bits){
     return bits;
 }
 
-std::queue<std::vector<bool>> UARTChannel::transmit(std::queue<UARTFrame> transmittedFrames){
+std::queue<std::vector<bool>> UARTChannel::transmit(std::queue<UARTFrame> transmittedFrames, ConsoleUI &ui){
     std::queue<std::vector<bool>> transmittedBitSets;
     while(!transmittedFrames.empty()){
         transmittedBitSets.push(errorInjection(transmittedFrames.front().getBits()));
+        ui.displayTransmision(transmittedFrames.front().getBits());
         transmittedFrames.pop();
     }
     return transmittedBitSets;
