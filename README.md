@@ -51,10 +51,10 @@ Generated frames:
 Output:
 
 ```
-TX -> 0
-TX -> 0
-TX -> 0
-TX -> 0
+TX -> 0 ->RX
+TX -> 0 ->RX
+TX -> 0 ->RX
+TX -> 0 ->RX
 ...
 ==================================
          TANSMISION SUMMARY 
