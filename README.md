@@ -56,8 +56,13 @@ TX -> 0
 TX -> 0
 TX -> 0
 ...
-
+==================================
+         TANSMISION SUMMARY 
+==================================      
 RECEIVED: Hi
+FRAMES SENT: 2
+ERRORS DETECTED: 0
+==================================
 ```
 
 ## How to Build
