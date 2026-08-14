@@ -187,3 +187,13 @@ void ConsoleUI::displayMessage(std::queue<UARTFrame> frames) const{
     }
     std::cout << "\n";
 }
+
+void ConsoleUI::displaySummary(const std::queue<UARTFrame> &frames, int errorsDetected) const{
+    std::cout << "==================================\n"; 
+    std::cout << "         TANSMISION SUMMARY       \n";
+    std::cout << "==================================\n"; 
+    displayMessage(frames);
+    std::cout << "FRAMES SENT: " << frames.size() << "\n";
+    std::cout <<  "ERRORS DETECTED: " << errorsDetected << "\n";
+    std::cout << "==================================\n"; 
+}

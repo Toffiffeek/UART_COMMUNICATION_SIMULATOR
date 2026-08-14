@@ -17,3 +17,7 @@ void UARTReceiver::decodeQueue(std::queue<std::vector<bool>> bitSets, const UART
 const std::queue<UARTFrame> &UARTReceiver::getReceivedFrames() const{
     return framesReceived;
 }
+
+const int UARTReceiver::getErrors() const{
+    return errors;
+}

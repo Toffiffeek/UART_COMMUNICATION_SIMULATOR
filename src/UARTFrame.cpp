@@ -133,13 +133,14 @@ void UARTFrame::stripConfigBits(std::vector<bool> &frame, const UARTConfig &conf
 }
 
 // TODO NEXT
-int UARTFrame::validateFrame(const std::vector<bool> &frame) const{
-    int numberOfOnes = 0;
-    for(int i = 1; i < DATA_BITS + 1; i++)
-    {
-        if(frame[i] == 1){
-            numberOfOnes++;
-        }
+int UARTFrame::checkError(const std::vector<bool> &frame, const UARTConfig &config) const{
+    bool isEven = calculateParityBit(frame);
+    switch(config.getParity()){
+        case ParityMode::Even:
+            return static_cast<int>(!isEven);
+        case ParityMode::Odd:
+            return static_cast<int>(isEven);
+        default:
+            return 0;
     }
-    return numberOfOnes;
 }

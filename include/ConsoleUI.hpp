@@ -14,6 +14,8 @@ public:
     ConsoleUI();
 
     void displayMenu() const;
+    void displaySummary(const std::queue<UARTFrame> &frames, int errorsDetected) const;
+
     int getIntInput(int min, int max) const;
     std::string getStringInput() const;
     
@@ -30,7 +32,6 @@ public:
     StopBits getStopBitsChoice() const;
 
     void displayConfig(const UARTConfig &config) const;
-
     void displayBits(const std::vector<bool> &bits) const;
     void displayFrame(const UARTFrame &frame) const;
     void displayTransmision(const std::vector<bool> &bits) const;
