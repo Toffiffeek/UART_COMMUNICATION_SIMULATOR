@@ -10,6 +10,9 @@
 
 class ConsoleUI
 {
+private:
+    static constexpr double VISUALIZATION_TIME_SCALE = 1000.0;
+
 public:
     ConsoleUI();
 
@@ -34,6 +37,6 @@ public:
     void displayConfig(const UARTConfig &config) const;
     void displayBits(const std::vector<bool> &bits) const;
     void displayFrame(const UARTFrame &frame) const;
-    void displayTransmision(const std::vector<bool> &bits) const;
+    void displayTransmision(std::queue<std::vector<bool>> bits, const UARTConfig &config) const;
     void displayMessage(std::queue<UARTFrame> frames) const;
 };

@@ -33,6 +33,17 @@ UART-Communication-Simulator/
 └── README.md
 ```
 
+## Transmission Visualization
+
+The simulator visualizes UART transmission in real time based on the configured baud rate.
+
+For readability, the transmission is intentionally slowed down by a factor of 1000 compared to the real UART transmission time.
+
+For example:
+- 9600 baud → approximately 104 ms per bit
+- 19200 baud → approximately 52 ms per bit
+- 115200 baud → approximately 8.7 ms per bit
+
 ## Example
 
 Input:
@@ -61,7 +72,8 @@ TX -> 0 ->RX
 ==================================      
 RECEIVED: Hi
 FRAMES SENT: 2
-ERRORS DETECTED: 0
+PARITY ERRORS DETECTED: 0
+FRAME ERRORS DETECTED: 0
 ==================================
 ```
 

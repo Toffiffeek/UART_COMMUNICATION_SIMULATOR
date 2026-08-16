@@ -1,6 +1,6 @@
 #pragma once
+
 #include "UARTFrame.hpp"
-#include "ConsoleUI.hpp"
 #include <random>
 #include <vector>
 #include <queue>
@@ -15,5 +15,5 @@ private:
 
 public:
     UARTChannel();
-    std::queue<std::vector<bool>> transmit(std::queue<UARTFrame> frames, ConsoleUI &ui);
+    std::queue<std::vector<bool>> transmit(std::queue<UARTFrame> frames);
 };

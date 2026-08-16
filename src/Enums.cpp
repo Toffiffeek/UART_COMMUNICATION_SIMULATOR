@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
-int baudRateToInt(BaudRate baudRate)
+double baudRateToDouble(BaudRate baudRate)
 {
     switch (baudRate)
     {

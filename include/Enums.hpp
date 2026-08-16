@@ -24,6 +24,6 @@ enum class StopBits
     Two = 2,
 };
 
-int baudRateToInt(BaudRate baudrate);
+double baudRateToDouble(BaudRate baudrate);
 int stopBitsToInt(StopBits stopBits);
 std::string parityModeToString(ParityMode parity);

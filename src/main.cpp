@@ -32,7 +32,8 @@ int main()
 
     UARTTransmitter tx(message, config);
     UARTChannel channel;
-    UARTReceiver rx(channel.transmit(tx.getFramesToTransmit(), ui), config);
+    ui.displayTransmision(channel.transmit(tx.getFramesToTransmit()), config);
+    UARTReceiver rx(channel.transmit(tx.getFramesToTransmit()), config);
     ui.displaySummary(rx.getReceivedFrames(), rx.getDetectedParityErrors(), rx.getDetectedFrameErrors());
 
     return 0;
