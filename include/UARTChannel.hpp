@@ -5,12 +5,14 @@
 #include <vector>
 #include <queue>
 
-class UARTChannel{
+class UARTChannel
+{
 private:
     std::mt19937 generator;
     std::uniform_int_distribution<int> distribution;
 
     std::vector<bool> errorInjection(std::vector<bool> transmittedBits);
+
 public:
     UARTChannel();
     std::queue<std::vector<bool>> transmit(std::queue<UARTFrame> frames, ConsoleUI &ui);

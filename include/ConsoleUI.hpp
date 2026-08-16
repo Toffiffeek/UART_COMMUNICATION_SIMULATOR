@@ -14,11 +14,11 @@ public:
     ConsoleUI();
 
     void displayMenu() const;
-    void displaySummary(const std::queue<UARTFrame> &frames, int errorsDetected) const;
+    void displaySummary(const std::queue<UARTFrame> &frames, int parityErrorsDetected, int frameErrorsDetected) const;
 
     int getIntInput(int min, int max) const;
     std::string getStringInput() const;
-    
+
     void displayBaudRateMenu() const;
     void displayParityMenu() const;
     void displayStopBitsMenu() const;

@@ -15,7 +15,7 @@
 #include "UARTTransmitter.hpp"
 #include "UARTChannel.hpp"
 #include "UARTReceiver.hpp"
-#include<bitset>
+#include <bitset>
 
 int main()
 {
@@ -33,7 +33,7 @@ int main()
     UARTTransmitter tx(message, config);
     UARTChannel channel;
     UARTReceiver rx(channel.transmit(tx.getFramesToTransmit(), ui), config);
-    ui.displaySummary(rx.getReceivedFrames(), rx.getErrors());
+    ui.displaySummary(rx.getReceivedFrames(), rx.getDetectedParityErrors(), rx.getDetectedFrameErrors());
 
     return 0;
 }

@@ -3,23 +3,26 @@
 #include <vector>
 #include <queue>
 
-UARTChannel::UARTChannel() : generator(std::random_device{}()), distribution(1, 1000)
-{};
+UARTChannel::UARTChannel() : generator(std::random_device{}()), distribution(1, 1000) {};
 
-std::vector<bool> UARTChannel::errorInjection(std::vector<bool> bits){
-    for(std::size_t i = 0; i < bits.size(); i++)
+std::vector<bool> UARTChannel::errorInjection(std::vector<bool> bits)
+{
+    for (std::size_t i = 0; i < bits.size(); i++)
     {
         int randomNumber = distribution(generator);
-        if(randomNumber == 1){
+        if (randomNumber < 5)
+        {
             bits[i] = !bits[i];
         }
     }
     return bits;
 }
 
-std::queue<std::vector<bool>> UARTChannel::transmit(std::queue<UARTFrame> transmittedFrames, ConsoleUI &ui){
+std::queue<std::vector<bool>> UARTChannel::transmit(std::queue<UARTFrame> transmittedFrames, ConsoleUI &ui)
+{
     std::queue<std::vector<bool>> transmittedBitSets;
-    while(!transmittedFrames.empty()){
+    while (!transmittedFrames.empty())
+    {
         transmittedBitSets.push(errorInjection(transmittedFrames.front().getBits()));
         ui.displayTransmision(transmittedFrames.front().getBits());
         transmittedFrames.pop();

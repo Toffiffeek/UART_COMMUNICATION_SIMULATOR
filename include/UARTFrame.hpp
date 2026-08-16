@@ -20,10 +20,12 @@ private:
     bool calculateParityBit(const std::vector<bool> &dataBits) const;
     void stripConfigBits(std::vector<bool> &frame, const UARTConfig &config);
     void bitsToCharacter(std::vector<bool> &frame);
-    int checkError(const std::vector<bool> &frame, const UARTConfig &config) const;
+
 public:
     UARTFrame(std::vector<bool> &bits, const UARTConfig &config);
     UARTFrame(char character, const UARTConfig &config);
+    int checkParityError(const std::vector<bool> &frame, const UARTConfig &config) const;
+    int checkFrameError(const std::vector<bool> &frame, const UARTConfig &config) const;
     char getCharacter() const;
-    const std::vector<bool> &getBits() const;    
+    const std::vector<bool> &getBits() const;
 };

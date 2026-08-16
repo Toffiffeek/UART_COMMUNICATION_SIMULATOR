@@ -45,17 +45,19 @@ void ConsoleUI::displayConfig(const UARTConfig &config) const
     std::cout << "==================================\n";
     std::cout << "BAUD RATE: " << baudRateToInt(config.getBaudRate()) << " BPS\n";
     std::cout << "NUMBER OF STOP BITS: " << stopBitsToInt(config.getStopBits()) << "\n";
-    std::cout << "PARITY MODE: " << parityModeToString(config.getParity()) <<"\n";
+    std::cout << "PARITY MODE: " << parityModeToString(config.getParity()) << "\n";
     std::cout << "==================================\n";
 }
 
-void ConsoleUI::displayFrame(const UARTFrame &frame) const{
-    std::cout << "==================================\n"; 
-    if(static_cast<int>(frame.getCharacter()) > 0)
+void ConsoleUI::displayFrame(const UARTFrame &frame) const
+{
+    std::cout << "==================================\n";
+    if (static_cast<int>(frame.getCharacter()) > 0)
     {
         std::cout << "CHARACTER: " << frame.getCharacter() << "\n";
     }
-    else{
+    else
+    {
         std::cout << "CHARACTER: ASCII NOT FOUND" << "\n";
     }
     std::cout << "BITS: ";
@@ -63,8 +65,10 @@ void ConsoleUI::displayFrame(const UARTFrame &frame) const{
     std::cout << "==================================\n";
 }
 
-void ConsoleUI::displayBits(const std::vector<bool> &bits) const{
-    for(bool bit:bits){
+void ConsoleUI::displayBits(const std::vector<bool> &bits) const
+{
+    for (bool bit : bits)
+    {
         std::cout << bit;
     }
     std::cout << "\n";
@@ -173,27 +177,33 @@ StopBits ConsoleUI::getStopBitsChoice() const
     return convertChoiceToStopBits(choice);
 }
 
-void ConsoleUI::displayTransmision(const std::vector<bool>& bits) const{
-    for(bool bit : bits){
+void ConsoleUI::displayTransmision(const std::vector<bool> &bits) const
+{
+    for (bool bit : bits)
+    {
         std::cout << "TX-> " << bit << " ->RX\n";
     }
 }
 
-void ConsoleUI::displayMessage(std::queue<UARTFrame> frames) const{
+void ConsoleUI::displayMessage(std::queue<UARTFrame> frames) const
+{
     std::cout << "RECEIVED: ";
-    while(!frames.empty()){
+    while (!frames.empty())
+    {
         std::cout << frames.front().getCharacter();
         frames.pop();
     }
     std::cout << "\n";
 }
 
-void ConsoleUI::displaySummary(const std::queue<UARTFrame> &frames, int errorsDetected) const{
-    std::cout << "==================================\n"; 
+void ConsoleUI::displaySummary(const std::queue<UARTFrame> &frames, int parityErrorsDetected, int frameErrorsDetected) const
+{
+    std::cout << "==================================\n";
     std::cout << "         TANSMISION SUMMARY       \n";
-    std::cout << "==================================\n"; 
+    std::cout << "==================================\n";
     displayMessage(frames);
     std::cout << "FRAMES SENT: " << frames.size() << "\n";
-    std::cout <<  "ERRORS DETECTED: " << errorsDetected << "\n";
-    std::cout << "==================================\n"; 
+    std::cout << "PARITY ERRORS DETECTED: " << parityErrorsDetected << "\n";
+    std::cout << "PARITY ERRORS DETECTED: " << frameErrorsDetected << "\n";
+    std::cout << "==================================\n";
 }

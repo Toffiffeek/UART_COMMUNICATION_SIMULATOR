@@ -6,7 +6,8 @@
 #include <bitset>
 #include <stdexcept>
 
-UARTFrame::UARTFrame(std::vector<bool> &bits, const UARTConfig &config) : bits(bits){
+UARTFrame::UARTFrame(std::vector<bool> &bits, const UARTConfig &config) : bits(bits)
+{
     stripConfigBits(bits, config);
     bitsToCharacter(bits);
 }
@@ -35,10 +36,12 @@ void UARTFrame::characterToBits(char character, std::vector<bool> &frame)
     }
 }
 
-void UARTFrame::bitsToCharacter(std::vector<bool> &frame){
+void UARTFrame::bitsToCharacter(std::vector<bool> &frame)
+{
     std::bitset<DATA_BITS> bs;
-    for(std::size_t i = 0; i < DATA_BITS; i++){
-        bs[i] = frame[i+1];
+    for (std::size_t i = 0; i < DATA_BITS; i++)
+    {
+        bs[i] = frame[i + 1];
     }
     character = static_cast<char>(bs.to_ulong());
 }
@@ -105,42 +108,82 @@ void UARTFrame::buildFrame(char character, std::vector<bool> &frame, const UARTC
     addStopBits(frame, config);
 }
 
-void UARTFrame::stripConfigBits(std::vector<bool> &frame, const UARTConfig &config){
-    switch(config.getStopBits()){
-        case StopBits::One:
-            if(config.getParity() == ParityMode::None){
+void UARTFrame::stripConfigBits(std::vector<bool> &frame, const UARTConfig &config)
+{
+    switch (config.getStopBits())
+    {
+    case StopBits::One:
+        if (config.getParity() == ParityMode::None)
+        {
+            frame.pop_back();
+        }
+        else
+        {
+            for (int i = 0; i < 2; i++)
+            {
                 frame.pop_back();
             }
-            else{
-                for(int i = 0; i < 2; i++){
-                    frame.pop_back();
-                }
-            }   
-            break;
-        case StopBits::Two:
-            if(config.getParity() == ParityMode::None){
+        }
+        break;
+    case StopBits::Two:
+        if (config.getParity() == ParityMode::None)
+        {
+            frame.pop_back();
+        }
+        else
+        {
+            for (int i = 0; i < 3; i++)
+            {
                 frame.pop_back();
             }
-            else{
-                for(int i = 0; i < 3; i++){
-                    frame.pop_back();
-                }
-            }
-            break;
-        default:
-            throw std::invalid_argument("INVALID ARGUMENT");
+        }
+        break;
+    default:
+        throw std::invalid_argument("INVALID ARGUMENT");
     }
 }
 
-// TODO NEXT
-int UARTFrame::checkError(const std::vector<bool> &frame, const UARTConfig &config) const{
-    bool isEven = calculateParityBit(frame);
-    switch(config.getParity()){
-        case ParityMode::Even:
-            return static_cast<int>(!isEven);
-        case ParityMode::Odd:
-            return static_cast<int>(isEven);
-        default:
-            return 0;
+int UARTFrame::checkParityError(const std::vector<bool> &frame, const UARTConfig &config) const
+{
+    std::vector<bool> frameToCheck = {frame.begin() + 1, frame.begin() + 10};
+    bool isEven = calculateParityBit(frameToCheck);
+    switch (config.getParity())
+    {
+    case ParityMode::Even:
+        return static_cast<int>(!isEven);
+    case ParityMode::Odd:
+        return static_cast<int>(isEven);
+    default:
+        return 0;
     }
+}
+
+int UARTFrame::checkFrameError(
+    const std::vector<bool> &frame,
+    const UARTConfig &config) const
+{
+    if (frame[0] != 0)
+    {
+        return 1;
+    }
+
+    std::size_t stopBitIndex = 9;
+
+    if (config.getParity() != ParityMode::None)
+    {
+        stopBitIndex++;
+    }
+
+    if (frame[stopBitIndex] != 1)
+    {
+        return 1;
+    }
+
+    if (config.getStopBits() == StopBits::Two &&
+        frame[stopBitIndex + 1] != 1)
+    {
+        return 1;
+    }
+
+    return 0;
 }

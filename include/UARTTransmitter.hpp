@@ -3,10 +3,11 @@
 
 #include "UARTFrame.hpp"
 #include "UARTConfig.hpp"
-#include<iostream>
-#include<queue>
+#include <iostream>
+#include <queue>
 
-class UARTTransmitter{
+class UARTTransmitter
+{
 private:
     std::queue<UARTFrame> framesToTransmit;
     void buildQueue(std::string message, const UARTConfig &config);
