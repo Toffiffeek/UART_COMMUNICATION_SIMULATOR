@@ -31,10 +31,9 @@ int main()
     std::string message = ui.getStringInput();
 
     UARTTransmitter tx(message, config);
-    UARTChannel channel;
-    std::queue<std::vector<bool>> transmittedBits = channel.transmit(tx.getFramesToTransmit());
-    ui.displayTransmision(transmittedBits, config);
-    UARTReceiver rx(transmittedBits, config);
+    UARTChannel channel(tx.getFramesToTransmit());
+    ui.displayTransmision(channel.getTransmittedBits(), config);
+    UARTReceiver rx(channel.getTransmittedBits(), config);
     ui.displaySummary(rx.getReceivedFrames(), rx.getDetectedParityErrors(), rx.getDetectedFrameErrors());
 
     return 0;

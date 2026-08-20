@@ -3,7 +3,9 @@
 #include <queue>
 #include <random>
 
-UARTChannel::UARTChannel() : generator(std::random_device{}()), distribution(1, 1000) {};
+UARTChannel::UARTChannel(const std::queue<UARTFrame> &frames) : generator(std::random_device{}()), distribution(1, 1000) {
+    transmit(frames);
+};
 
 std::vector<bool> UARTChannel::errorInjection(std::vector<bool> bits)
 {
@@ -18,13 +20,15 @@ std::vector<bool> UARTChannel::errorInjection(std::vector<bool> bits)
     return bits;
 }
 
-std::queue<std::vector<bool>> UARTChannel::transmit(std::queue<UARTFrame> transmittedFrames)
+void UARTChannel::transmit(std::queue<UARTFrame> transmittedFrames)
 {
-    std::queue<std::vector<bool>> transmittedBitSets;
     while (!transmittedFrames.empty())
     {
-        transmittedBitSets.push(errorInjection(transmittedFrames.front().getBits()));
+        transmittedBits.push(errorInjection(transmittedFrames.front().getBits()));
         transmittedFrames.pop();
     }
-    return transmittedBitSets;
+}
+
+const std::queue<std::vector<bool>> &UARTChannel::getTransmittedBits() const{
+    return transmittedBits;
 }
