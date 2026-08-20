@@ -32,7 +32,9 @@ int main()
 
     UARTTransmitter tx(message, config);
     UARTChannel channel;
-    UARTReceiver rx(channel.transmit(tx.getFramesToTransmit()), config);
+    std::queue<std::vector<bool>> transmittedBits = channel.transmit(tx.getFramesToTransmit());
+    ui.displayTransmision(transmittedBits, config);
+    UARTReceiver rx(transmittedBits, config);
     ui.displaySummary(rx.getReceivedFrames(), rx.getDetectedParityErrors(), rx.getDetectedFrameErrors());
 
     return 0;
