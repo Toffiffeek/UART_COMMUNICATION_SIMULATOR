@@ -148,7 +148,7 @@ void UARTFrame::stripConfigBits(std::vector<bool> &frame, const UARTConfig &conf
 
 int UARTFrame::checkParityError(const std::vector<bool> &frame, const UARTConfig &config) const
 {
-    std::vector<bool> frameToCheck = {frame.begin() + 1, frame.begin() + 9};
+    std::vector<bool> frameToCheck = {frame.begin() + 1, frame.begin() + 10};
     bool isEven = calculateParityBit(frameToCheck);
     switch (config.getParity())
     {
