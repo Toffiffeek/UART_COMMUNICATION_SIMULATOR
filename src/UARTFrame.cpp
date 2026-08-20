@@ -128,7 +128,10 @@ void UARTFrame::stripConfigBits(std::vector<bool> &frame, const UARTConfig &conf
     case StopBits::Two:
         if (config.getParity() == ParityMode::None)
         {
-            frame.pop_back();
+            for (int i = 0; i < 2; i++)
+            {
+                frame.pop_back();
+            }
         }
         else
         {
@@ -145,7 +148,7 @@ void UARTFrame::stripConfigBits(std::vector<bool> &frame, const UARTConfig &conf
 
 int UARTFrame::checkParityError(const std::vector<bool> &frame, const UARTConfig &config) const
 {
-    std::vector<bool> frameToCheck = {frame.begin() + 1, frame.begin() + 10};
+    std::vector<bool> frameToCheck = {frame.begin() + 1, frame.begin() + 9};
     bool isEven = calculateParityBit(frameToCheck);
     switch (config.getParity())
     {

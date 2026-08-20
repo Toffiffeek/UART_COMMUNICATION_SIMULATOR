@@ -81,10 +81,10 @@ Generated frames:
 Output:
 
 ```
-TX -> 0 ->RX
-TX -> 0 ->RX
-TX -> 0 ->RX
-TX -> 0 ->RX
+TX -> 0 -> RX
+TX -> 0 -> RX
+TX -> 0 -> RX
+TX -> 0 -> RX
 ...
 ==================================
          TANSMISSION SUMMARY 

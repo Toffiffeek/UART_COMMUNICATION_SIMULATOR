@@ -189,7 +189,7 @@ void ConsoleUI::displayTransmision(std::queue<std::vector<bool>> bitSets, const 
     {
         for (bool bit : bitSets.front())
         {
-            std::cout << "TX-> " << bit << " ->RX\n"
+            std::cout << "TX -> " << bit << " -> RX\n"
                       << std::flush;
             std::this_thread::sleep_for(bitTime);
         }
@@ -209,7 +209,7 @@ void ConsoleUI::displayMessage(std::queue<UARTFrame> frames) const
 void ConsoleUI::displaySummary(const std::queue<UARTFrame> &frames, int parityErrorsDetected, int frameErrorsDetected) const
 {
     std::cout << "==================================\n";
-    std::cout << "         TANSMISION SUMMARY       \n";
+    std::cout << "         TANSMISSION SUMMARY       \n";
     std::cout << "==================================\n";
     std::cout << "RECEIVED: ";
     displayMessage(frames);
